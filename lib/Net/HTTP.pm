@@ -5,8 +5,8 @@ use vars qw($VERSION @ISA $SOCKET_CLASS);
 
 $VERSION = "6.06";
 unless ($SOCKET_CLASS) {
-    eval { require IO::Socket::INET } || require IO::Socket;
-    $SOCKET_CLASS = "IO::Socket::INET";
+    eval { require IO::Socket::IP } || require IO::Socket;
+    $SOCKET_CLASS = "IO::Socket::IP";
 }
 require Net::HTTP::Methods;
 require Carp;
@@ -59,20 +59,20 @@ C<Net::HTTP> class represents a connection to an HTTP server.  The
 HTTP protocol is described in RFC 2616.  The C<Net::HTTP> class
 supports C<HTTP/1.0> and C<HTTP/1.1>.
 
-C<Net::HTTP> is a sub-class of C<IO::Socket::INET>.  You can mix the
+C<Net::HTTP> is a sub-class of C<IO::Socket::IP>.  You can mix the
 methods described below with reading and writing from the socket
 directly.  This is not necessary a good idea, unless you know what you
 are doing.
 
 The following methods are provided (in addition to those of
-C<IO::Socket::INET>):
+C<IO::Socket::IP>):
 
 =over
 
 =item $s = Net::HTTP->new( %options )
 
 The C<Net::HTTP> constructor method takes the same options as
-C<IO::Socket::INET>'s as well as these:
+C<IO::Socket::IP>'s as well as these:
 
   Host:            Initial host attribute value
   KeepAlive:       Initial keep_alive attribute value
@@ -82,10 +82,10 @@ C<IO::Socket::INET>'s as well as these:
   MaxLineLength:   Initial max_line_length attribute value
   MaxHeaderLines:  Initial max_header_lines attribute value
 
-The C<Host> option is also the default for C<IO::Socket::INET>'s
+The C<Host> option is also the default for C<IO::Socket::IP>'s
 C<PeerAddr>.  The C<PeerPort> defaults to 80 if not provided.
 
-The C<Listen> option provided by C<IO::Socket::INET>'s constructor
+The C<Listen> option provided by C<IO::Socket::IP>'s constructor
 method is not allowed.
 
 If unable to connect to the given HTTP server then the constructor
@@ -267,7 +267,7 @@ names prefixed with C<http_> and C<io_>.
 
 =head1 SEE ALSO
 
-L<LWP>, L<IO::Socket::INET>, L<Net::HTTP::NB>
+L<LWP>, L<IO::Socket::IP>, L<Net::HTTP::NB>
 
 =head1 COPYRIGHT
 

@@ -22,7 +22,7 @@ WriteMakefile(
     LICENSE => "perl",
     MIN_PERL_VERSION => 5.006002,
     PREREQ_PM => {
-	'IO::Socket::INET' => 0,
+	'IO::Socket::IP' => 0,
 	'IO::Select' => 0,
         'Compress::Raw::Zlib' => 0,
         'IO::Compress::Gzip' => 0,

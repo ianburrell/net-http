@@ -21,17 +21,17 @@ DESCRIPTION
     protocol is described in RFC 2616. The `Net::HTTP' class supports
     `HTTP/1.0' and `HTTP/1.1'.
 
-    `Net::HTTP' is a sub-class of `IO::Socket::INET'. You can mix the
+    `Net::HTTP' is a sub-class of `IO::Socket::IP'. You can mix the
     methods described below with reading and writing from the socket
     directly. This is not necessary a good idea, unless you know what you
     are doing.
 
     The following methods are provided (in addition to those of
-    `IO::Socket::INET'):
+    `IO::Socket::IP'):
 
     $s = Net::HTTP->new( %options )
         The `Net::HTTP' constructor method takes the same options as
-        `IO::Socket::INET''s as well as these:
+        `IO::Socket::IP''s as well as these:
 
           Host:            Initial host attribute value
           KeepAlive:       Initial keep_alive attribute value
@@ -41,10 +41,10 @@ DESCRIPTION
           MaxLineLength:   Initial max_line_length attribute value
           MaxHeaderLines:  Initial max_header_lines attribute value
 
-        The `Host' option is also the default for `IO::Socket::INET''s
+        The `Host' option is also the default for `IO::Socket::IP''s
         `PeerAddr'. The `PeerPort' defaults to 80 if not provided.
 
-        The `Listen' option provided by `IO::Socket::INET''s constructor
+        The `Listen' option provided by `IO::Socket::IP''s constructor
         method is not allowed.
 
         If unable to connect to the given HTTP server then the constructor
@@ -207,7 +207,7 @@ SUBCLASSING
     names prefixed with `http_' and `io_'.
 
 SEE ALSO
-    LWP, IO::Socket::INET, Net::HTTP::NB
+    LWP, IO::Socket::IP, Net::HTTP::NB
 
 COPYRIGHT
     Copyright 2001-2003 Gisle Aas.

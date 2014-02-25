@@ -7,7 +7,7 @@ plan skip_all => "This test doesn't work on Windows" if $^O eq "MSWin32";
 plan tests => 14;
 
 require Net::HTTP::NB;
-use IO::Socket::INET;
+use IO::Socket::IP;
 use Data::Dumper;
 use IO::Select;
 use Socket qw(TCP_NODELAY);
@@ -22,8 +22,8 @@ my %lopts = (
     Listen => 1024
 );
 
-my $srv = IO::Socket::INET->new(%lopts);
-is(ref($srv), "IO::Socket::INET");
+my $srv = IO::Socket::IP->new(%lopts);
+is(ref($srv), "IO::Socket::IP");
 my $host = $srv->sockhost . ':' . $srv->sockport;
 my $nb = Net::HTTP::NB->new(Host => $host, Blocking => 0);
 is(ref($nb), "Net::HTTP::NB");
@@ -31,7 +31,7 @@ is(IO::Select->new($nb)->can_write(3), 1);
 
 ok($nb->write_request("GET", "/"));
 my $acc = $srv->accept;
-is(ref($acc), "IO::Socket::INET");
+is(ref($acc), "IO::Socket::IP");
 $acc->sockopt(TCP_NODELAY, 1);
 ok($acc->sysread($buf, 4096));
 ok($acc->syswrite("HTTP/1.1 200 OK\r\nContent-Length: 5\r\n\r\n"));

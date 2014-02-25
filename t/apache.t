@@ -6,8 +6,8 @@ BEGIN {
 	exit;
     }
     eval {
-        require IO::Socket::INET;
-	my $s = IO::Socket::INET->new(
+        require IO::Socket::IP;
+	my $s = IO::Socket::IP->new(
 	    PeerHost => "www.apache.org:80",
 	    Timeout => 5,
 	);
